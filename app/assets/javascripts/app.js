@@ -1,5 +1,4 @@
-//React Flux Implementation
-
+//
 var Constants = {
 	CHANGE_EVENT: 'change',
 	ADD_COMMENT: 'comments.add'
@@ -32,14 +31,30 @@ var Store = new _.extend({}, EventEmitter.prototype, {
 
 });
 
-var AppDispatcher = new FluxDispatcher(function(payload){
+var AppDispatcher = new Flux.Dispatcher();
+AppDispatcher.register(function(payload){
 	var action = payload.actionType;
+	console.log(payload);
 	switch(action){
 		case Constants.ADD_COMMENT:
 			Store.addComment(payload.comment);
+			Store.emitChange()
 			break;
 		default:
 			// NO_OP
 
 	}
 });
+
+var Actions = new _.extend({}, {
+
+	addComment: function(params){
+
+		AppDispatcher.dispatch({
+			actionType: Constants.ADD_COMMENT,
+			comment: params
+		});
+	}
+});
+
+
