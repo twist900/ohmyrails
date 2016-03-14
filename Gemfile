@@ -33,7 +33,10 @@ gem 'ancestry'
 gem 'rails_admin'
 gem 'bootstrap-sass' 
 gem 'autoprefixer-rails'
+
 gem 'react-rails'
+gem 'flux-rails-assets'
+gem 'lodash-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

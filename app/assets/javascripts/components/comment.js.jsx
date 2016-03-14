@@ -3,7 +3,7 @@ var Comment = React.createClass({
 	propTypes: {
 		author: React.PropTypes.string,
 		body: React.PropTypes.string,
-		rank: React.PropTypes.number
+		rank: React.PropTypes.number 
 	},
 
 	render: function() {
