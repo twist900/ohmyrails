@@ -37,7 +37,7 @@ gem 'autoprefixer-rails'
 gem 'react-rails'
 gem 'flux-rails-assets'
 gem 'lodash-rails'
-gem 'sprockets-es6'
+gem 'sprockets-es6', '0.6.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
