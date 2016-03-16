@@ -1,3 +1,5 @@
+import Comment from './comment'
+
 class CommentList extends React.Component{
 
 	static get contextTypes(){
@@ -22,9 +24,9 @@ class CommentList extends React.Component{
 		return (
 
 				<div>
-					{ this.context.store.comments().map((comment) => {
+					{ this.context.store.comments().map((comment, i) => {
 					//	return <Comment key={comment.id} rank={comment.rank} body={comment.body} author={comment.author} /> 
-						return <Comment key={comment.id} {... comment}/>
+						return <Comment key={i} {... comment}/>
 					}) }
 				</div>
 
