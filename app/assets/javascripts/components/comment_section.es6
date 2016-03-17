@@ -30,8 +30,8 @@ class CommentSection extends React.Component {
 
 		return (
 			<div>
-				<CommentForm />   
-				<CommentList   />
+				<CommentForm isReplying={true}	/>   
+				<CommentList  parent_id={null}/>
 			</div>
 		);
 	} 

@@ -7,7 +7,7 @@ class CommentForm extends React.Component {
 		}
 	}
 
-	constructor(){
+	constructor(props){
 		super();
 		this.defaultState = { author: '', body: ''};
 		this.state = this.defaultState;
@@ -22,14 +22,14 @@ class CommentForm extends React.Component {
 
 	submitComment(event){
 		event.preventDefault();
-		console.log(this.state);
-		this.context.actions.addComment(this.state);
+		console.log(this.props);
+		this.context.actions.addComment(_.merge(this.state, { parent_id: this.props.parent_id }));
 		this.setState(this.defaultState);
 	}
 
 	render(){
 		return (
-			<div className="form-group">
+			<div className={ "form-group" + `${this.props.isReplying ? "" : " hide"}`}>
 				<form className="input-form">
 					<div className="form-group">
 						<label>Author</label>
@@ -41,7 +41,7 @@ class CommentForm extends React.Component {
 					</div>
 
 					<div className="form-group">
-						<button onClick={this.submitComment.bind(this)} type="submit" className="btn btn-default"> Submit</button>
+						<button onClick={this.submitComment.bind(this)} type="submit" className="btn btn-primary"> Submit</button>
 					</div>
 				</form>
 			</div>
