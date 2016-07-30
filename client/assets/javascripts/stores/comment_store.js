@@ -1,8 +1,9 @@
-import AppDispatcher from '/app_dispatcher';
-import Constants from '/constants'
+import AppDispatcher from '../app_dispatcher';
+import Constants from '../constants'
+import { EventEmitter } from 'events';
 
 class CommentStore extends EventEmitter{
-	
+
 	constructor(){
 		super();
 		this._comments = [];
@@ -14,7 +15,11 @@ class CommentStore extends EventEmitter{
 				case Constants.SET_COMMENTS:
 					this.setComments(payload.comments);
 					this.emitChange();
-					break;     
+					break;
+				case Constants.UPVOTE_COMMENT:
+					this.upvote(payload.comment);
+					this.emitChange();
+					break;
 				case Constants.ADD_COMMENT:
 					this.addComment(payload.comment);
 					this.emitChange();
@@ -25,7 +30,7 @@ class CommentStore extends EventEmitter{
 			}
 		});
 
-	} 
+	}
 
 	addComment(comment){
 		this._comments[comment.id  || this._comments.length] = comment;
@@ -36,6 +41,10 @@ class CommentStore extends EventEmitter{
 		comments.forEach(comment => {
 			this.addComment(comment);
 		});
+	}
+
+	upvote(comment){
+		this._comments[comment.id].rank ++;
 	}
 
 	comments(parentId){
@@ -51,7 +60,7 @@ class CommentStore extends EventEmitter{
 	}
 
 	emitChange(){
-		this.emit(Constants.CHANGE_EVENT);	 
+		this.emit(Constants.CHANGE_EVENT);
 	}
 
 }

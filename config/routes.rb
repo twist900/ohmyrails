@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   
   
   resources :restaurants do
-    resources :comments
+    resources :comments do
+      put 'upvote', to: 'comments#upvote'
+    end
   end
   
   root 'restaurants#index'

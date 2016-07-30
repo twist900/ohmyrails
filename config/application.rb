@@ -22,11 +22,6 @@ module OhMyRails
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
 
-    Rails.application.config.assets.configure do |env|
-        env.register_transformer 'text/ecmascript-6', 'application/javascript',
-            Sprockets::ES6.new('modules' => 'system', 'moduleIds' => true)
-    end 
-    
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311164151) do
+ActiveRecord::Schema.define(version: 20160317153648) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "author"
     t.string   "body"
-    t.integer  "rank"
+    t.integer  "rank",          default: 0
     t.integer  "restaurant_id"
     t.datetime "created_at"
     t.datetime "updated_at"

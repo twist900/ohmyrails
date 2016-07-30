@@ -1,5 +1,5 @@
 class Api {
-	
+
 	static token(){
 		let el = document.querySelector('meta[name="csrf-token"]')
 		return el ? el.getAttribute('content') : '';
@@ -15,14 +15,32 @@ class Api {
 		 }
 	}
 
+	static put(route, params){
+
+		return fetch(`${route}.json`, {
+			method: 'put',
+			credentials: 'include',
+			headers: this.headers()
+		    } );
+	}
+
 	static post(route, params){
 
 		return fetch(`${route}.json`, {
-			method: 'post', 
+			method: 'post',
 			credentials: 'include',
 			headers: this.headers(),
 		    body: JSON.stringify(params)} );
 	}
+
+	static get(route, params){
+
+		return fetch(`${route}.json`, {
+			method: 'get',
+			credentials: 'include',
+			headers: this.headers(),
+		    body: JSON.stringify(params)} ).then( resp => { return resp.json(); });
+	}
 }
 
-export default Api; 
+export default Api;

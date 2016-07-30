@@ -1,4 +1,5 @@
 import Comment from './comment'
+import React from 'react';
 
 class CommentList extends React.Component{
 
@@ -10,7 +11,7 @@ class CommentList extends React.Component{
 	}
 
 	componentDidMount() {
-	    this.context.store.addChangeListener(this._onChange.bind(this));  
+	    this.context.store.addChangeListener(this._onChange.bind(this));
 	}
 
 	componentWillUnmount() {
@@ -19,13 +20,13 @@ class CommentList extends React.Component{
 
 
 	render(){
-		
-		console.log('rendering');
+
+
 		return (
 
 				<ul>
 					{ this.context.store.comments(this.props.parent_id).map((comment, i) => {
-					//	return <Comment key={comment.id} rank={comment.rank} body={comment.body} author={comment.author} /> 
+					//	return <Comment key={comment.id} rank={comment.rank} body={comment.body} author={comment.author} />
 						return <Comment key={i} {... comment}/>
 					}) }
 				</ul>
@@ -35,7 +36,7 @@ class CommentList extends React.Component{
 
 	_onChange(){
 		this.forceUpdate();
-	}	
+	}
 }
 
 export default CommentList;
